@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="Follow God Dashboard - Manage your account, orders, and preferences." />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <title>FOLLOW GOD DASHBOARD — YOUR ACCOUNT</title>
+  <link rel="icon" type="image/png" href="images/mebig.png" />
+  <link rel="stylesheet" href="styles/index.css" />
+  <link rel="stylesheet" href="styles/footer.css" />
+  <link rel="stylesheet" href="styles/no-horizontal-scroll.css" />
+  <link rel="stylesheet" href="styles/no-input-zoom.css" />
+  <link rel="stylesheet" href="styles/dashboard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;400;600;700;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@1.5.7/dist/lottie-player.js"></script>
+</head>
+
+<body class="dashboard-page">
+  <!-- Top navigation / header -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <a href="index.html" class="logo" aria-label="Emmy — Home">
+          <img src="images/fglogo2.jpg" alt="Emmy logo" width="120" height="40" loading="eager" decoding="async" fetchpriority="high" />
+        </a>
+        <button class="hamburger" id="hamburgerBtn" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu">
+          <svg class="hamburger-open" aria-hidden="true" width="20" height="20" viewBox="0 0 432 384" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M0 336v-48h432v48H0zm0-120v-48h432v48H0zM0 48h432v48H0V48z" />
+          </svg>
+          <svg class="hamburger-close icon-cancel" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 5L5 19M5 5l14 14" />
+          </svg>
+        </button>
+        <nav class="brand-links" aria-label="Quick links">
+          <a class="small-link" href="index.html">Home</a>
+          <a class="small-link" href="shop.html">Shop</a>
+        </nav>
+      </div>
+      <nav class="top-actions">
+        <button id="syncBtn" class="sync-btn" aria-label="Sync changes">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36M20.49 15a9 9 0 0 1-14.85 3.36" />
+          </svg>
+          Sync
+        </button>
+        <button id="logoutBtn" class="logout-btn" aria-label="Sign out">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m7-7l-7 7 7 7" />
+          </svg>
+          Sign Out
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="dashboard-main">
+    <div class="container dashboard-container">
+      <div class="dashboard-header">
+        <h1>Product Dashboard</h1>
+        <p>Manage your products, images, colors, and sizes</p>
+      </div>
+
+      <!-- Tabs Navigation -->
+      <div class="dashboard-tabs">
+        <button class="tab-btn active" data-tab="products">Products</button>
+        <button class="tab-btn" data-tab="add-product">Add Product</button>
+      </div>
+
+      <!-- Products Tab -->
+      <div id="products-tab" class="tab-content active">
+        <div class="products-toolbar">
+          <input type="search" id="searchInput" placeholder="Search products..." class="search-input" />
+          <select id="sortSelect" class="sort-select">
+            <option value="default">Default</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+          </select>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+          <!-- Products loaded here by JS -->
+        </div>
+      </div>
+
+      <!-- Add Product Tab -->
+      <div id="add-product-tab" class="tab-content">
+        <div class="add-product-form-wrapper">
+          <h2>Add New Product</h2>
+          <form id="addProductForm" class="add-product-form">
+            <!-- Product Info Section -->
+            <fieldset>
+              <legend>Product Information</legend>
+              
+              <div class="form-group">
+                <label for="productTitle">Product Title *</label>
+                <input type="text" id="productTitle" name="title" required placeholder="e.g., FOLLOW GOD - ANGEL TEE" />
+              </div>
+
+              <div class="form-group">
+                <label for="productPrice">Price (₦) *</label>
+                <input type="number" id="productPrice" name="price" required min="0" placeholder="e.g., 70000" />
+              </div>
+
+              <div class="form-group">
+                <label for="productRating">Rating (0-5) *</label>
+                <input type="number" id="productRating" name="rating" required min="0" max="5" step="0.5" value="5" />
+              </div>
+
+              <div class="form-group">
+                <label for="productDescription">Description</label>
+                <textarea id="productDescription" name="description" placeholder="Product description..." rows="4"></textarea>
+              </div>
+            </fieldset>
+
+            <!-- Image Upload Section -->
+            <fieldset>
+              <legend>Product Image</legend>
+              
+              <div class="image-upload-area" id="imageUploadArea">
+                <svg aria-hidden="true" width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 0 1 2.828 0l9.172 9.172M4 16l6-6a2 2 0 0 1 2.828 0l10 10m-13-14a1 1 0 1 1 2 0 1 1 0 0 1-2 0z" />
+                </svg>
+                <p>Drag and drop your image here, or click to select</p>
+                <input type="file" id="productImage" name="image" accept="image/*" required hidden />
+              </div>
+              <div id="imagePreview" class="image-preview" style="display: none;">
+                <img id="previewImg" src="" alt="Preview" />
+                <button type="button" class="btn-remove-image" id="removeImageBtn">Remove</button>
+              </div>
+            </fieldset>
+
+            <!-- Colors Section -->
+            <fieldset>
+              <legend>Available Colors</legend>
+              <div class="colors-input-group">
+                <input type="text" id="colorInput" placeholder="Enter color (e.g., Navy)" class="color-input" />
+                <button type="button" id="addColorBtn" class="btn btn-small">Add Color</button>
+              </div>
+              <div class="colors-list" id="colorsList">
+                <!-- Colors added here -->
+              </div>
+            </fieldset>
+
+            <!-- Sizes Section -->
+            <fieldset>
+              <legend>Available Sizes</legend>
+              <div class="sizes-input-group">
+                <input type="text" id="sizeInput" placeholder="Enter size (e.g., M, L, XL)" class="size-input" />
+                <button type="button" id="addSizeBtn" class="btn btn-small">Add Size</button>
+              </div>
+              <div class="sizes-list" id="sizesList">
+                <!-- Sizes added here -->
+              </div>
+            </fieldset>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Create Product</button>
+              <button type="reset" class="btn btn-secondary">Clear</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Product Edit Modal -->
+  <div id="editModal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <h2>Edit Product</h2>
+      
+      <form id="editProductForm" class="edit-product-form">
+        <div class="form-group">
+          <label for="editProductTitle">Product Title</label>
+          <input type="text" id="editProductTitle" name="title" required />
+        </div>
+
+        <div class="form-group">
+          <label for="editProductPrice">Price (₦)</label>
+          <input type="number" id="editProductPrice" name="price" required min="0" />
+        </div>
+
+        <div class="form-group">
+          <label for="editProductRating">Rating (0-5)</label>
+          <input type="number" id="editProductRating" name="rating" min="0" max="5" step="0.5" />
+        </div>
+
+        <div class="form-group">
+          <label for="editProductDescription">Description</label>
+          <textarea id="editProductDescription" name="description" rows="4"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="editProductImage">Change Image</label>
+          <input type="file" id="editProductImage" name="image" accept="image/*" />
+          <div id="editImagePreview" class="image-preview-small" style="margin-top: 12px;">
+            <img id="editPreviewImg" src="" alt="Current image" />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <button type="button" class="btn btn-secondary" id="closeModalBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="deleteModal" class="modal hidden">
+    <div class="modal-content modal-alert">
+      <h2>Delete Product?</h2>
+      <p>Are you sure you want to delete this product? This action cannot be undone.</p>
+      <div class="form-actions">
+        <button id="confirmDeleteBtn" class="btn btn-danger">Delete</button>
+        <button id="cancelDeleteBtn" class="btn btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Message -->
+  <div id="successMessage" class="success-message hidden">
+    <div class="message-content">
+      <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+      </svg>
+      <span id="successText">Operation completed successfully!</span>
+    </div>
+  </div>
+
+  <footer class="site-footer site-footer-modern" style="margin-top: 80px;">
+    <div class="container footer-top">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" aria-label="Emmy — Home">
+            <img src="images/foot.png" alt="Emmy logo" />
+          </a>
+          <p class="brand-desc">
+            Faith-inspired fashion for everyday wear. Shop curated collections made with care.
+          </p>
+        </div>
+
+        <nav class="footer-links" aria-label="Footer navigation">
+          <div class="col">
+            <h4>SHOP</h4>
+            <ul>
+              <li><a href="shop.html">All products</a></li>
+              <li><a href="shop.html?category=best-sellers">Best sellers</a></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h4>COMPANY</h4>
+            <ul>
+              <li><a href="#" class="js-about-link">About us</a></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h4>SUPPORT</h4>
+            <ul>
+              <li><a href="faq.html">FAQs</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="container narrow bottom-inner">
+        <div class="copyright">
+          &copy; FOLLOW GOD — <span class="year">2025</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script/shop.js"></script>
+  <script src="script/dashboard.js"></script>
+  <script src="script/whatsapp-float.js" defer></script>
+</body>
+</html>

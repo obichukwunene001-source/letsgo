@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="description"
+    content="Shop Follow God faith-inspired fashion. Browse our curated collection of beanies, hoodies, caps, footwear, and more." />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <title>SHOP FOLLOW GOD — CAPS & BEANIES</title>
+
+  <link rel="icon" type="image/png" href="images/mebig.png" />
+  <!-- Resource hints for external fonts and CDNs (improves connection speed) -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="https://unpkg.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Critical CSS (render-blocking stylesheets) -->
+  <link rel="stylesheet" href="styles/index.css" />
+  <link rel="stylesheet" href="styles/shop.css" />
+  <link rel="stylesheet" href="styles/footer.css" />
+  <link rel="stylesheet" href="styles/no-horizontal-scroll.css" />
+  <link rel="stylesheet" href="styles/no-input-zoom.css" />
+
+  <!-- Google Fonts with optimal loading strategy -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet"
+    fetchpriority="high" />
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;400;600;700;900&display=swap"
+    rel="stylesheet" fetchpriority="high" />
+
+  <!-- Smooth scrolling: CSS for native smooth scroll + better touch momentum -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+  </style>
+
+  <!-- Smooth-scroll helper for in-page anchor links (optimized for performance) -->
+  <script defer>
+    (function () {
+      'use strict';
+      var supportsScrollIntoView = 'scrollIntoView' in Element.prototype;
+      if (!supportsScrollIntoView) return;
+
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href]');
+        if (!a) return;
+
+        var href = a.getAttribute('href');
+        if (!href || href.charAt(0) !== '#') {
+          var parts = href.split('#');
+          if (parts.length !== 2) return;
+          var path = parts[0];
+          var samePage = (!path || path === location.pathname.split('/').pop() || path === location.pathname);
+          if (!samePage) return;
+          href = '#' + parts[1];
+        }
+
+        var id = href.slice(1);
+        var target = document.getElementById(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.pushState(null, '', href);
+        }
+      }, { passive: true });
+    })();
+  </script>
+
+  <!-- Lottie player (non-critical, async loading) -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@1.5.7/dist/lottie-player.js" async></script>
+
+  <!-- Image preloader (deferred to avoid blocking initial render) -->
+  <script src="script/image-preloader.js" defer></script>
+
+  <!-- Selective prefetch for critical product images (reduced set for mobile optimization) -->
+  <!-- Only prefetch first 8 images to balance performance and bandwidth -->
+  <link rel="prefetch" href="images/fg_army1.jpg" as="image" />
+  <link rel="prefetch" href="images/fg_black1.jpg" as="image" />
+  <link rel="prefetch" href="images/fg_blue1.jpg" as="image" />
+  <link rel="prefetch" href="images/bean_army1.jpg" as="image" />
+  <link rel="prefetch" href="images/bean_black1.jpg" as="image" />
+  <link rel="prefetch" href="images/bean_brown1.jpg" as="image" />
+  <link rel="prefetch" href="images/bean_green2.jpg" as="image" />
+  <link rel="prefetch" href="images/bean_grey1.jpg" as="image" />
+</head>
+
+<body class="shop-page">
+  <!-- Top navigation / header -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <a href="index.html" class="logo" aria-label="Emmy — Home">
+          <img src="images/blacklog.png" alt=" logo" width="120" height="40" loading="eager" decoding="async"
+            fetchpriority="high" />
+        </a>
+        <!-- Mobile hamburger button (left side) -->
+        <button class="hamburger" id="hamburgerBtn" aria-controls="mobileMenu" aria-expanded="false"
+          aria-label="Open menu">
+          <svg class="hamburger-open" aria-hidden="true" width="20" height="20" viewBox="0 0 432 384"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M0 336v-48h432v48H0zm0-120v-48h432v48H0zM0 48h432v48H0V48z" />
+          </svg>
+          <svg class="hamburger-close icon-cancel" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M19 5L5 19M5 5l14 14" />
+          </svg>
+        </button>
+
+      </div>
+      <nav class="top-actions">
+        <div class="search-wrap" style="position: relative">
+          <input type="search" placeholder="Search everything" id="search" aria-label="Search" />
+          <div class="search-results" id="searchResults"></div>
+        </div>
+        <a class="notif-btn cart" href="checkout.html" aria-label="Cart" aria-haspopup="true" aria-expanded="false">
+          <img src="icons/cart.svg" alt="Cart" width="20" height="20" aria-hidden="true" />
+          <span class="notif-badge" aria-hidden="false">0</span>
+        </a>
+      </nav>
+    </div>
+    <nav class="main-nav inconsolata-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li>
+          <a href="#" class="collections-link" aria-haspopup="true" aria-expanded="false">Collections</a>
+        </li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Mobile off-canvas menu -->
+  <div id="mobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="mobile-menu-inner">
+
+      <nav class="mobile-main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li class="has-mega no-hover">
+            <a href="#" class="collections-link" aria-haspopup="true" aria-expanded="false">Collections</a>
+            <div class="mega-menu" role="menu" aria-hidden="true">
+              <div class="mega-columns">
+                <div class="mega-col">
+                  <div class="mega-col-head">
+                    <img src="images/p1.jpeg" alt="New Arrivals" class="mega-col-logo" width="48" height="48"
+                      loading="lazy" decoding="async" />
+                    <h4>NEW ARRIVALS</h4>
+                  </div>
+                </div>
+                <div class="mega-col">
+                  <div class="mega-col-head">
+                    <img src="images/p2.jpeg" alt="Best Sellers" class="mega-col-logo" width="48" height="48"
+                      loading="lazy" decoding="async" />
+                    <h4>BEST SELLERS</h4>
+                  </div>
+                </div>
+                <div class="mega-col">
+                  <div class="mega-col-head">
+                    <img src="images/a1.jpg" alt="Casual Wear" class="mega-col-logo" width="48" height="48"
+                      loading="lazy" decoding="async" />
+                    <h4>CAPS</h4>
+                  </div>
+                </div>
+                <div class="mega-col">
+                  <div class="mega-col-head">
+                    <img src="images/h1.jpg" alt="Workwear" class="mega-col-logo" width="48" height="48" loading="lazy"
+                      decoding="async" />
+                    <h4>HOODIES</h4>
+                  </div>
+                </div>
+                <div class="mega-col">
+                  <div class="mega-col-head">
+                    <img src="images/blueshoe.jpg" alt="Footwear" class="mega-col-logo" width="48" height="48"
+                      loading="lazy" decoding="async" />
+                    <h4>FOOTWEAR</h4>
+                  </div>
+                </div>
+                <div class="mega-col">
+                  <div class="mega-col-head">
+                    <img src="images/pnco.jpg" alt="Accessories" class="mega-col-logo" width="48" height="48"
+                      loading="lazy" decoding="async" />
+                    <h4>FOR WOMEN</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="faq.html">FAQs</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div id="mobileMenuBackdrop" class="mobile-menu-backdrop hidden" aria-hidden="true"></div>
+
+  <!-- Mobile off-canvas menu -->
+  <!-- NOTE: Single mobile menu instance is already defined above; avoid duplicate markup. -->
+
+  <main>
+    <div class="container catalog">
+      <div class="shop-head">
+        <h1>Shop</h1>
+        <div class="filters">
+          <label>Sort by
+            <select id="sortSelect">
+              <option value="default">Default</option>
+              <option value="price-asc">Price — Low to High</option>
+              <option value="price-desc">Price — High to Low</option>
+            </select>
+          </label>
+          <label>Categories
+            <select id="categorySelect">
+              <option value="all">All Categories</option>
+              <option value="new-arrivals">NEW ARRIVALS</option>
+              <option value="best-sellers">BEST SELLERS</option>
+              <option value="caps">CAPS</option>
+              <option value="hoodies">HOODIES</option>
+              <option value="footwear">FOOTWEAR</option>
+              <option value="women">FOR WOMEN</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <!-- Product grid (optimized for smooth rendering and scrolling) -->
+      <div class="shop-grid" id="items" role="region" aria-label="Shop items"
+        style="contain: layout style paint; will-change: contents;">
+        <!-- Product cards are rendered by script/shop.js -->
+      </div>
+    </div>
+  </main>
+
+
+  <script src="script/shop.js" defer></script>
+  <script src="script/index.js" defer></script>
+  <script src="script/newsletter.js" defer></script>
+
+  <!-- Coming Soon Modal (shared) -->
+  <div id="comingSoonModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true"
+    aria-labelledby="comingSoonTitle">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-body">
+        <h2 id="comingSoonTitle">Coming Soon!</h2>
+        <p>We're working on something amazing. Stay tuned.</p>
+        <button class="btn btn-primary" id="closeComingSoon">OK</button>
+      </div>
+    </div>
+  </div>
+  <script src="script/coming-soon.js" defer></script>
+  <script src="script/footer-injector.js" defer></script>
+  <script src="script/whatsapp-float.js" defer></script>
+</body>
+
+</html>

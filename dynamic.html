@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="Discover Follow God faith-inspired apparel. View detailed product information and add to cart." />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <title>FOLLOW GOD PRODUCT — CAPS & BEANIES</title>
+  <link rel="icon" type="image/png" href="images/mebig.png" />
+  <link rel="stylesheet" href="styles/index.css" />
+  <link rel="stylesheet" href="styles/faq.css" />
+  <link rel="stylesheet" href="styles/footer.css" />
+  <link rel="stylesheet" href="styles/no-horizontal-scroll.css" />
+  <link rel="stylesheet" href="styles/no-input-zoom.css" />
+  <link rel="stylesheet" href="styles/shop.css" />
+  <link rel="stylesheet" href="styles/dynamic.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;400;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@1.5.7/dist/lottie-player.js"></script>
+</head>
+
+<body class="dynamic-page">
+  <!-- Top navigation / header -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <a href="index.html" class="logo" aria-label="Emmy — Home">
+          <img src="images/blacklog.png" alt="Emmy logo" width="120" height="40" loading="eager" decoding="async" fetchpriority="high" />
+        </a>
+        <button class="hamburger" id="hamburgerBtn" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu">
+          <svg class="hamburger-open" aria-hidden="true" width="20" height="20" viewBox="0 0 432 384" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M0 336v-48h432v48H0zm0-120v-48h432v48H0zM0 48h432v48H0V48z" />
+          </svg>
+          <svg class="hamburger-close icon-cancel" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 5L5 19M5 5l14 14" />
+          </svg>
+        </button>
+        
+      </div>
+      <nav class="top-actions">
+        <div class="search-wrap" style="position: relative">
+          <input type="search" placeholder="Search everything" id="search" aria-label="Search" />
+          <div class="search-results" id="searchResults"></div>
+        </div>
+        <a class="notif-btn cart" href="checkout.html" aria-label="Cart" aria-haspopup="true" aria-expanded="false">
+          <img src="icons/cart.svg" alt="Cart" width="20" height="20" aria-hidden="true" />
+          <span class="notif-badge" aria-hidden="false">0</span>
+        </a>
+      </nav>
+    </div>
+    <nav class="main-nav inconsolata-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Mobile off-canvas menu -->
+  <div id="mobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="mobile-menu-inner">
+      
+      <nav class="mobile-main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li class="has-mega no-hover">
+            <a href="#" class="collections-link" aria-haspopup="true" aria-expanded="false">Collections</a>
+            <div class="mega-menu" role="menu" aria-hidden="true">
+              <div class="mega-columns">
+                <div class="mega-col">
+                  <div class="mega-col-head">
+                    <img src="images/p1.jpeg" alt="New Arrivals" class="mega-col-logo" width="48" height="48" loading="lazy" decoding="async" />
+                    <h4>NEW ARRIVALS</h4>
+                  </div>
+                </div>
+                <div class="mega-col">
+                  <div class="mega-col-head">
+                    <img src="images/p2.jpeg" alt="Best Sellers" class="mega-col-logo" width="48" height="48" loading="lazy" decoding="async" />
+                    <h4>BEST SELLERS</h4>
+                  </div>
+                </div>
+                <div class="mega-col">
+                  <div class="mega-col-head">
+                    <img src="images/a1.jpg" alt="Casual Wear" class="mega-col-logo" width="48" height="48" loading="lazy" decoding="async" />
+                    <h4>CAPS</h4>
+                  </div>
+                </div>
+                <div class="mega-col">
+                  <div class="mega-col-head">
+                    <img src="images/h1.jpg" alt="Workwear" class="mega-col-logo" width="48" height="48" loading="lazy" decoding="async" />
+                    <h4>HOODIES</h4>
+                  </div>
+                </div>
+                <div class="mega-col">
+                  <div class="mega-col-head">
+                    <img src="images/blueshoe.jpg" alt="Footwear" class="mega-col-logo" width="48" height="48" loading="lazy" decoding="async" />
+                    <h4>FOOTWEAR</h4>
+                  </div>
+                </div>
+                <div class="mega-col">
+                  <div class="mega-col-head">
+                    <img src="images/pnco.jpg" alt="Accessories" class="mega-col-logo" width="48" height="48" loading="lazy" decoding="async" />
+                    <h4>FOR WOMEN</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="faq.html">FAQs</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div id="mobileMenuBackdrop" class="mobile-menu-backdrop hidden" aria-hidden="true"></div>
+
+  <main class="product-detail-main">
+    <div class="container product-detail-container">
+      <!-- Back button -->
+      <div class="back-nav">
+        <button id="backBtn" class="back-btn" aria-label="Go back">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          <span>Back</span>
+        </button>
+      </div>
+
+      <div class="product-detail-grid">
+        <!-- Product Image Section -->
+        <div class="product-image-section">
+          <div class="product-image-main">
+            <img id="mainImage" src="" alt="Product image" />
+            <!-- Image Slider Controls (overlaid) -->
+            <button id="prevSlideBtn" class="slider-btn slider-btn-prev" aria-label="Previous image">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <div class="slider-counter">
+              <span id="currentSlide">1</span> / <span id="totalSlides">4</span>
+            </div>
+            <button id="nextSlideBtn" class="slider-btn slider-btn-next" aria-label="Next image">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+          <!-- Thumbnails carousel -->
+          <div class="product-thumbs">
+            <div class="thumbs-scroll" id="thumbsScroll">
+              <!-- Thumbnails populated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Info Section -->
+        <div class="product-info-section">
+          <!-- Product Header -->
+          <div class="product-header">
+            <h1 id="productTitle" class="product-title"></h1>
+            <div class="product-rating">
+              <div class="stars" id="productStars" role="img"></div>
+              <span class="review-count">(<span id="reviewCount">0</span> reviews)</span>
+            </div>
+          </div>
+
+          <!-- Price Section -->
+          <div class="product-price-section">
+            <div class="price-main">
+              <span id="productPrice" class="price-now"></span>
+              <span id="productOldPrice" class="price-old" style="display:none;"></span>
+            </div>
+            <p class="product-description" id="productDescription"></p>
+          </div>
+
+          <!-- Color Selection -->
+          <div class="product-option">
+            <label for="colorSelect" class="option-label">
+              <span class="label-text">Color</span>
+              <span class="selected-value" id="colorValue"></span>
+            </label>
+            <div class="color-grid" id="colorGrid">
+              <!-- Color options populated by JS -->
+            </div>
+          </div>
+
+          <!-- Quantity Selection -->
+          <div class="product-option quantity-option">
+            <label class="option-label">Quantity</label>
+            <div class="quantity-control">
+              <button id="decreaseQty" class="qty-btn" aria-label="Decrease quantity">−</button>
+              <input id="qtyInput" type="number" min="1" max="99" value="1" class="qty-input" aria-label="Quantity" />
+              <button id="increaseQty" class="qty-btn" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="product-actions">
+            <button id="addToCartBtn" class="btn btn-primary btn-add-to-cart">
+              <img src="icons/cart.svg" alt="" width="20" height="20" aria-hidden="true" style="filter: brightness(0) invert(1);" />
+              Add to Cart
+            </button>
+            <button id="buyNowBtn" class="btn btn-secondary btn-buy-now">Buy Now</button>
+            <button id="wishlistBtn" class="btn btn-icon" aria-label="Add to wishlist">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Product Info -->
+          <div class="product-details-info">
+            <div class="info-item">
+              <span class="info-icon">💬</span>
+              <span class="info-text"><a href="https://wa.me/234903116058" target="_blank" rel="noopener noreferrer">Contact support</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Products Section -->
+      <section class="related-products-section">
+        <h2>You Might Also Like</h2>
+        <div class="shop-grid" id="relatedProducts">
+          <!-- Related products populated by JS -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  
+  <script src="script/shop.js" defer></script>
+  <script src="script/dynamic.js" defer></script>
+  <script src="script/footer-injector.js" defer></script>
+
+  <!-- Coming Soon Modal (shared) -->
+  <div id="comingSoonModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="comingSoonTitle">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-body">
+        <h2 id="comingSoonTitle">Coming Soon!</h2>
+        <p>We're working on something amazing. Stay tuned.</p>
+        <button class="btn btn-primary" id="closeComingSoon">OK</button>
+      </div>
+    </div>
+  </div>
+  <script src="script/coming-soon.js" defer></script>
+  <script src="script/whatsapp-float.js" defer></script>
+</body>
+</html>

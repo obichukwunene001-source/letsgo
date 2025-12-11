@@ -1,0 +1,24 @@
+/* Prevent mobile browsers from zooming inputs when they receive focus.
+   This stylesheet should be loaded after other stylesheets to override small font-size rules.
+   Increase the font-size for inputs commonly causing mobile auto-zoom (iOS Safari) to >= 16px. */
+
+@media (max-width: 820px) {
+  /* Generic controls */
+  input, textarea, select, button, .btn, .qty-input, .input-wrapper input {
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+    -webkit-text-size-adjust: 100% !important;
+    -moz-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+  }
+
+  /* Specific newsletter / search inputs */
+  .newsletter-form input[type="email"],
+  .top-actions input[type="search"],
+  #hero-search, #hero-search .search-wrap input, #hero-search input {
+    font-size: 16px !important;
+  }
+
+  /* Quantity inputs used in dynamic pages */
+  .qty-input { font-size: 16px !important; }
+}

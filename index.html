@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="Follow God - Faith-inspired fashion for everyday wear. Shop curated collections made with care." />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1" />
+  <title>FOLLOW GOD — CAPS & BEANIES</title>
+  <link rel="icon" type="image/png" href="images/mebig.png" />
+  <link rel="stylesheet" href="styles/index.css" />
+  <!-- Load shop styles so product cards match shop page -->
+  <link rel="stylesheet" href="styles/shop.css" />
+  <link rel="preload" href="styles/faq.css" as="style" onload="this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="styles/faq.css" />
+  </noscript>
+  <link rel="preload" href="styles/footer.css" as="style" onload="this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="styles/footer.css" />
+  </noscript>
+  <link rel="preload" href="styles/no-horizontal-scroll.css" as="style" onload="this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="styles/no-horizontal-scroll.css" />
+  </noscript>
+  <link rel="preload" href="styles/index-mobile-repaint.css" as="style" onload="this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="styles/index-mobile-repaint.css" />
+  </noscript>
+  <link rel="preload" href="styles/no-input-zoom.css" as="style" onload="this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="styles/no-input-zoom.css" />
+  </noscript>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet" />
+  <!-- Inconsolata - preconnect + font import -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;400;600;700;900&display=swap"
+    rel="stylesheet" />
+  <!-- Roboto for search dropdown -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <!-- Lottie player for animated social icons -->
+
+  <!-- Lottie player moved to the end of body to avoid render-blocking; will load deferred. -->
+  <!-- Prefetch hero background images; avoid forcing large image downloads at initial render which can cause scroll/paint jank -->
+  <link rel="prefetch" as="image" href="emy/em1.jpg" />
+  <link rel="prefetch" as="image" href="emy/em4.jpg" />
+  <link rel="prefetch" as="image" href="emy/em5.jpg" />
+  <!-- Image preloader for immediate loading -->
+  <script src="script/image-preloader.js" defer></script>
+  <!-- Prefetch product images so they start loading from index when user might click Shop -->
+  <link rel="prefetch" as="image" href="images/fg_army1.jpg" />
+  <link rel="prefetch" as="image" href="images/fg_black1.jpg" />
+  <link rel="prefetch" as="image" href="images/fg_blue1.jpg" />
+  <link rel="prefetch" as="image" href="images/fg_grey1.jpg" />
+  <link rel="prefetch" as="image" href="images/fg_orange1.jpg" />
+  <link rel="prefetch" as="image" href="images/fg_red1.jpg" />
+  <link rel="prefetch" as="image" href="images/fg_violet1.jpg" />
+  <link rel="prefetch" as="image" href="images/fg_mili1.jpg" />
+  <link rel="prefetch" as="image" href="images/bean_army1.jpg" />
+  <!-- Smooth scrolling: CSS for native smooth scroll + better touch momentum -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+  </style>
+</head>
+
+<body class="index-page">
+  <!-- Page loader overlay (shows on first load until images/resources finish and min delay expires) -->
+  <div id="pageLoader" class="loader-overlay" aria-hidden="false">
+    <div class="loader-spinner" role="status" aria-live="polite" aria-label="Loading">
+      <svg viewBox="0 0 50 50" aria-hidden="true">
+        <circle cx="25" cy="25" r="20" fill="none" stroke-width="4" stroke="#fff" stroke-opacity="0.15"></circle>
+        <circle cx="25" cy="25" r="20" fill="none" stroke-width="4" stroke="#ffffff"></circle>
+      </svg>
+    </div>
+  </div>
+  <!-- Top navigation / header -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <a href="index.html" class="logo" aria-label="Emmy — Home">
+          <img src="images/blacklog.png" alt=" logo" width="120" height="40" loading="eager" decoding="async"
+            fetchpriority="high" />
+        </a>
+        <!-- Mobile hamburger button (left side) -->
+        <button class="hamburger" id="hamburgerBtn" aria-controls="mobileMenu" aria-expanded="false"
+          aria-label="Open menu">
+          <svg class="hamburger-open" aria-hidden="true" width="20" height="20" viewBox="0 0 432 384"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M0 336v-48h432v48H0zm0-120v-48h432v48H0zM0 48h432v48H0V48z" />
+          </svg>
+          <svg class="hamburger-close icon-cancel" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M19 5L5 19M5 5l14 14" />
+          </svg>
+        </button>
+
+      </div>
+      <nav class="top-actions">
+        <div class="search-wrap" style="position: relative">
+          <input type="search" placeholder="Search everything" id="search" aria-label="Search" />
+          <div class="search-results" id="searchResults"></div>
+        </div>
+        <a class="notif-btn cart" href="checkout.html" aria-label="Cart" aria-haspopup="true" aria-expanded="false">
+          <img src="icons/cart.svg" alt="Cart" width="20" height="20" aria-hidden="true" />
+          <span class="notif-badge" aria-hidden="false">0</span>
+        </a>
+      </nav>
+    </div>
+    <nav class="main-nav inconsolata-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li>
+          <a href="#" class="collections-link" aria-haspopup="true" aria-expanded="false">Collections</a>
+        </li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Mobile off-canvas menu -->
+  <div id="mobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="mobile-menu-inner">
+
+      <nav class="mobile-main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li>
+            <a href="#" class="collections-link" aria-haspopup="false">Collections</a>
+          </li>
+          <li><a href="faq.html">FAQs</a></li>
+          <li>
+            <a href="checkout.html" class="checkout-link">Checkout
+              <span class="checkout-count" aria-hidden="true">0</span></a>
+          </li>
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div id="mobileMenuBackdrop" class="mobile-menu-backdrop hidden" aria-hidden="true"></div>
+
+  <!-- Hero -->
+  <section class="hero premium">
+    <div class="hero-search-bar" id="heroSearchBar">
+      <div class="search-wrap" style="width:100%;">
+        <input type="search" placeholder="Search products..." id="hero-search" aria-label="Search products"
+          aria-controls="heroSearchResults" />
+        <button class="hero-search-btn" aria-label="Search" type="button" id="hero-search-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="search-results" id="heroSearchResults"></div>
+    </div>
+    <div class="hero-scroller">
+      <div class="hero-pane hero-one">
+        <div class="container">
+          <div class="hero-left slide-from-right" aria-live="polite">
+            <h1 class="brand-title">TRUCKER CAPS</h1>
+            <p class="lead">Style & Comfort For Every Head</p>
+            <a class="cta" href="shop.html?category=caps">Shop Trucker Caps</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-pane hero-two" aria-hidden="true">
+        <div class="container">
+          <div class="hero-left slide-from-right" aria-hidden="true">
+            <h1 class="brand-title">CAMOUFLAGE CAPS</h1>
+            <p class="lead">Bold Style & Street Attitude</p>
+            <a class="cta" href="shop.html" aria-label="Explore camouflage caps"
+              data-cta-label="Explore Camo">Explore Camo</a>
+          </div>
+        </div>
+      </div>
+      <!-- Pane 3: Fade effect -->
+      <div class="hero-pane hero-three">
+        <div class="container">
+          <div class="hero-left slide-from-right" aria-live="polite">
+            <h1 class="brand-title">BEANIES</h1>
+            <p class="lead">Warm Comfort & Bold Vibes</p>
+            <a class="cta" href="shop.html?category=beanies" aria-label="Explore our beanies"
+              data-cta-label="Explore Beanies">Explore Beanies</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pane 5: Zoom (Ken Burns) effect -->
+      <div class="hero-pane hero-five">
+        <div class="container">
+          <div class="hero-left slide-from-right" aria-live="polite">
+            <h1 class="brand-title">HEAD WARMERS</h1>
+            <p class="lead">Premium Quality, Perfect Fit</p>
+            <a class="cta" href="shop.html?category=warmers" aria-label="Shop head warmers"
+              data-cta-label="Shop Head Warmers">Shop Head Warmers</a>
+          </div>
+        </div>
+      </div>
+      <!-- Pane 6 removed: we now use 5 panes only -->
+    </div>
+  </section>
+
+
+  <!-- Product catalog (replaced New Arrivals) -->
+  <section class="product-catalog shop-page">
+    <div class="container catalog">
+      <h2>NEW ARRIVALS</h2>
+      <hr />
+      <div class="shop-grid" id="items" role="region" aria-label="Shop items">
+        <div class="product-wrap" data-product-id="1">
+          <article class="shop-card" data-product-id="1">
+            <div class="card-content">
+              <img class="thumb" src="images/fg_army1.jpg" alt="FOLLOW GOD - ARMY SLEEVE" width="180" height="180"
+                loading="lazy" decoding="async" fetchpriority="low" />
+              <div class="title">FG - CAMO YELLOW TRUCKER</div>
+              <div class="price">₦25,000.00</div>
+              <div class="stars" data-rating="5" aria-label="5 out of 5 stars" role="img"></div>
+            </div>
+          </article>
+          <button class="btn btn-add">Add to cart</button>
+        </div>
+        <div class="product-wrap" data-product-id="2">
+          <article class="shop-card" data-product-id="2">
+            <div class="card-content">
+              <img class="thumb" src="images/fg_black1.jpg" alt="FOLLOW GOD - BLACK TEE" width="180" height="180"
+                loading="lazy" decoding="async" fetchpriority="low" />
+              <div class="title">FG - CLASSIC BLACK TRUCKER</div>
+              <div class="price">₦25,000.00</div>
+              <div class="stars" data-rating="4.5" aria-label="4.5 out of 5 stars" role="img"></div>
+            </div>
+          </article>
+          <button class="btn btn-add">Add to cart</button>
+        </div>
+        <div class="product-wrap" data-product-id="3">
+          <article class="shop-card" data-product-id="3">
+            <div class="card-content">
+              <img class="thumb" src="images/fg_blue1.jpg" alt="FOLLOW GOD - BLUE TEE" width="180" height="180"
+                loading="lazy" importance="high" fetchpriority="low" decoding="async" />
+              <div class="title">FG- SKY BLUE TRUCKER</div>
+              <div class="price">₦25,000.00</div>
+              <div class="stars" data-rating="5" aria-label="5 out of 5 stars" role="img"></div>
+            </div>
+          </article>
+          <button class="btn btn-add">Add to cart</button>
+        </div>
+        <div class="product-wrap" data-product-id="4">
+          <article class="shop-card" data-product-id="4">
+            <div class="card-content">
+              <img class="thumb" src="images/fg_grey1.jpg" alt="FOLLOW GOD - GREY TEE" width="180" height="180"
+                loading="lazy" importance="high" fetchpriority="low" decoding="async" />
+              <div class="title">FG - SILVER GREY TRUCKER</div>
+              <div class="price">₦25,000.00</div>
+              <div class="stars" data-rating="4" aria-label="4 out of 5 stars" role="img"></div>
+            </div>
+          </article>
+          <button class="btn btn-add">Add to cart</button>
+        </div>
+        <div class="product-wrap" data-product-id="5">
+          <article class="shop-card" data-product-id="5">
+            <div class="card-content">
+              <img class="thumb" src="images/fg_orange1.jpg" alt="FOLLOW GOD - ORANGE TEE" width="180" height="180"
+                loading="lazy" importance="high" fetchpriority="low" decoding="async" />
+              <div class="title">FG - BURNT ORANGE TRUCKER</div>
+              <div class="price">₦25,000.00</div>
+              <div class="stars" data-rating="4.5" aria-label="4.5 out of 5 stars" role="img"></div>
+            </div>
+          </article>
+          <button class="btn btn-add">Add to cart</button>
+        </div>
+        <div class="product-wrap" data-product-id="11">
+          <article class="shop-card" data-product-id="11">
+            <div class="card-content">
+              <img class="thumb" src="images/bean_army1.jpg" alt="FG - CHARCOAL GREY BEANIE" width="180" height="180"
+                loading="lazy" importance="high" fetchpriority="low" decoding="async" />
+              <div class="title">FG - CHARCOAL GREY BEANIE</div>
+              <div class="price">₦28,000.00</div>
+              <div class="stars" data-rating="5" aria-label="5 out of 5 stars" role="img"></div>
+            </div>
+          </article>
+          <button class="btn btn-add">Add to cart</button>
+        </div>
+        <div class="product-wrap" data-product-id="12">
+          <article class="shop-card" data-product-id="12">
+            <div class="card-content">
+              <img class="thumb" src="images/bean_black1.jpg" alt="FG - JET BLACK BEANIE" width="180" height="180"
+                loading="lazy" importance="high" fetchpriority="low" decoding="async" />
+              <div class="title">FG - JET BLACK BEANIE</div>
+              <div class="price">₦28,000.00</div>
+              <div class="stars" data-rating="4" aria-label="4 out of 5 stars" role="img"></div>
+            </div>
+          </article>
+          <button class="btn btn-add">Add to cart</button>
+        </div>
+        <div class="product-wrap" data-product-id="13">
+          <article class="shop-card" data-product-id="13">
+            <div class="card-content">
+              <img class="thumb" src="images/bean_brown1.jpg" alt="FG - EARTH BROWN BEANIE" width="180" height="180"
+                loading="lazy" importance="high" fetchpriority="low" decoding="async" />
+              <div class="title">FG - EARTH BROWN BEANIE</div>
+              <div class="price">₦28,000.00</div>
+              <div class="stars" data-rating="4.5" aria-label="4.5 out of 5 stars" role="img"></div>
+            </div>
+          </article>
+          <button class="btn btn-add">Add to cart</button>
+        </div>
+        <div class="product-wrap" data-product-id="14">
+          <article class="shop-card" data-product-id="14">
+            <div class="card-content">
+              <img class="thumb" src="images/bean_green2.jpg" alt="FG - LIGHT GREEN BEANIE" width="180" height="180" loading="lazy"
+                importance="high" fetchpriority="low" decoding="async" />
+              <div class="title">FG - LIGHT GREEN BEANIE</div>
+              <div class="price">₦28,000.00</div>
+              <div class="stars" data-rating="5" aria-label="5 out of 5 stars" role="img"></div>
+            </div>
+          </article>
+          <button class="btn btn-add">Add to cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coming Soon Modal -->
+  <div id="comingSoonModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true"
+    aria-labelledby="comingSoonTitle">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-body">
+        <h2 id="comingSoonTitle">Coming Soon!</h2>
+        <p>We're working on something amazing. Stay tuned.</p>
+        <button class="btn btn-primary" id="closeComingSoon">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Make resource loading non-blocking: add defer and move non-critical libs above injector so elements can use them -->
+  <script defer>
+    // Smooth-scroll helper for in-page anchor links
+    (function () {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href]');
+        if (!a) return;
+        try {
+          var href = a.getAttribute('href');
+          if (!href) return;
+          if (href.charAt(0) === '#') {
+            var id = href.slice(1);
+            var target = document.getElementById(id);
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              history.pushState(null, '', '#' + id);
+            }
+          } else {
+            var parts = href.split('#');
+            if (parts.length === 2) {
+              var path = parts[0];
+              var hash = parts[1];
+              var samePage = (!path || path === location.pathname.split('/').pop() || path === location.pathname);
+              if (samePage) {
+                var tgt = document.getElementById(hash);
+                if (tgt) {
+                  e.preventDefault();
+                  tgt.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  history.pushState(null, '', '#' + hash);
+                }
+              }
+            }
+          }
+        } catch (err) {
+          /* ignore and fall back to default behavior */
+        }
+      }, { passive: true });
+    })();
+  </script>
+
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@1.5.7/dist/lottie-player.js" defer></script>
+  <script src="script/loader.js" defer></script>
+  <script src="script/shop.js" defer></script>
+  <script src="script/index.js" defer></script>
+  <script src="script/footer-injector.js" defer></script>
+  <script src="script/newsletter.js" defer></script>
+  <script src="script/coming-soon.js" defer></script>
+  <script src="script/whatsapp-float.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,926 @@
+/* Dynamic Product Detail Page Styles */
+
+:root {
+  --card-bg: #ffffff ;
+  --accent-yellow: #ffd54a;
+  --shop-bg: #eeeee37e;
+  --text-primary: #000;
+  --text-secondary: #666;
+  --border-color: #e9e9e9;
+  --success-color: #4caf50;
+}
+
+/* Page layout */
+.dynamic-page {
+  padding: calc(36px + var(--topbar-height)) 0 60px;
+  background: var(--shop-bg);
+  overflow-x: hidden;
+}
+
+.product-detail-main {
+  /* Use the --vh variable set by JS to avoid dynamic toolbar viewport changes on mobile */
+  min-height: calc( (var(--vh, 1vh) * 100) - var(--topbar-height) );
+}
+
+.product-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Back button */
+.back-nav {
+  margin-bottom: 30px;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  border-color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Product detail grid */
+.product-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 80px;
+  align-items: start;
+}
+
+/* Make the image slightly larger than the info column on medium screens so the info side appears smaller */
+@media (max-width: 1024px) {
+  .product-detail-grid { grid-template-columns: 1.2fr 0.8fr; gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  .product-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* Image section */
+.product-image-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.product-image-main {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-image-main:hover img {
+  transform: scale(1.05);
+}
+
+/* Fallback styling for images that fail to load - shows a neutral placeholder appearance */
+.img-fallback {
+  object-fit: contain !important;
+  background: linear-gradient(180deg, #f4f4f4, #e7e7e7) !important;
+  filter: grayscale(0.2) !important;
+  opacity: 0.98 !important;
+}
+
+.product-image-main .img-fallback {
+  background: linear-gradient(180deg, #f5f5f5, #f0f0f0) !important;
+}
+
+/* Small label inside thumbnail or related card for missing images */
+/* If you want a label for missing images, add overlay markup next to img in the markup
+   or create an absolutely positioned child element inside the wrapper and toggle its visibility on error.
+*/
+
+/* Slider buttons - positioned absolutely on left and right sides */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #333;
+  z-index: 10;
+}
+
+.slider-btn-prev {
+  left: 12px;
+}
+
+.slider-btn-next {
+  right: 12px;
+}
+
+.slider-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
+/* Slide counter - positioned at bottom center of image */
+.slider-counter {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  min-width: 50px;
+  text-align: center;
+  z-index: 10;
+}
+
+/* Page flip / card animation styles */
+.flip-card {
+  position: absolute;
+  inset: 0;
+  perspective: 1200px;
+  z-index: 15;
+}
+
+.flip-card .side {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 1.8s cubic-bezier(.32,.86,.33,1);
+  display: block;
+}
+
+.flip-card .side img { width: 100%; height: 100%; object-fit: cover; display:block; }
+
+.flip-card .front { transform: rotateY(0deg); }
+.flip-card .back { transform: rotateY(180deg); }
+
+/* Next: front rotates to -180deg, back to 0deg */
+.flip-card.flip-next .front { transform: rotateY(-180deg); }
+.flip-card.flip-next .back { transform: rotateY(0deg); }
+
+/* Prev: front rotates to 180deg, back rotates to 0deg from -180deg */
+.flip-card.flip-prev .front { transform: rotateY(180deg); }
+.flip-card.flip-prev .back { transform: rotateY(0deg); }
+
+
+/* Thumbnails */
+.product-thumbs {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 8px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.thumbs-scroll {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.thumb-btn {
+  flex: 0 0 80px;
+  width: 80px;
+  height: 80px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.06s ease, box-shadow 0s ease;
+  padding: 0;
+}
+
+.thumb-btn:hover {
+  border-color: var(--border-color);
+}
+
+.thumb-btn.active {
+  border: 2px solid #a7570d !important;
+  box-shadow: none !important;
+}
+
+.thumb-btn.active:hover {
+  border-color: #a7570d !important;
+}
+
+/* prevent focus/active pseudo-classes from changing border; only .active class controls it */
+.thumb-btn:focus,
+.thumb-btn:active {
+  outline: none;
+  border-color: var(--border-color) !important;
+}
+
+.thumb-btn.active:focus,
+.thumb-btn.active:active {
+  border-color: #a7570d !important;
+}
+
+.thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Info section */
+.product-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Product header */
+.product-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 24px;
+}
+
+.product-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 12px 0;
+  color: var(--text-primary);
+  line-height: 1.2;
+  
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stars {
+  --star-size: 12px;
+  font-size: var(--star-size);
+  --percent: 100%;
+  --star-color: #d4af37;
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #dcdcdc;
+}
+
+.stars::before {
+  content: '★★★★★';
+  color: #dcdcdc;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+.stars::after {
+  content: '★★★★★';
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  width: var(--percent, 0%);
+  white-space: nowrap;
+  transition: width .18s ease;
+  background: linear-gradient(180deg, #fff9e6 0%, #ffd54a 30%, #d4af37 70%, #b88a12 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+.review-count {
+  font-size: 14px;
+  color: grey;
+}
+
+/* Price section */
+.product-price-section {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.price-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.price-now {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.price-old {
+  font-size: 18px;
+  color: var(--text-secondary);
+  text-decoration: line-through;
+}
+
+.product-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  text-transform: none;
+}
+
+/* Product options */
+.product-option {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.option-label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label-text {
+  flex: 1;
+}
+
+.selected-value {
+  color: var(--text-secondary);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* Color grid */
+.color-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+@media (max-width: 640px) {
+  .color-grid {
+    justify-content: center;
+  }
+}
+
+.color-btn {
+  width: 48px;
+  height: 48px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #ccc;
+  position: relative;
+}
+
+.color-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.color-btn.active {
+  border-color: var(--text-primary);
+  box-shadow: 0 0 0 2px var(--card-bg), 0 0 0 4px var(--text-primary);
+}
+
+/* Size grid */
+.size-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .size-grid {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 8px;
+  }
+}
+
+@media (max-width: 420px) {
+  .size-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+}
+
+.size-btn {
+  padding: 12px 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--card-bg);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 640px) {
+  .size-btn {
+    padding: 10px 6px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .size-btn {
+    padding: 8px 4px;
+    font-size: 11px;
+  }
+}
+
+.size-btn:hover {
+  border-color: var(--text-primary);
+}
+
+.size-btn.active {
+  background: var(--text-primary);
+  color: var(--card-bg);
+  border-color: var(--text-primary);
+}
+
+.size-guide {
+  font-size: 13px;
+  margin: 0;
+}
+
+.size-guide a {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+/* Quantity control */
+.quantity-option {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--card-bg);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 6px;
+  width: fit-content;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.qty-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.qty-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.qty-btn:active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.qty-input {
+  width: 50px;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 4px 2px;
+}
+
+.qty-input:focus {
+  outline: none;
+}
+
+/* Remove mobile tap highlight and visual focus ring for quantity controls */
+.qty-btn, .qty-input {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.qty-btn:focus, .qty-btn:active, .qty-input:focus, .qty-input:active{
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Action buttons */
+.product-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 12px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+@media (max-width: 480px) {
+  .product-actions {
+    grid-template-columns: 1fr;
+  }
+  .btn-add-to-cart {
+    margin-bottom: 16px;
+  }
+}
+
+.btn {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--text-primary);
+  color: var(--card-bg);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary.added {
+  background: var(--success-color);
+}
+
+.btn-secondary {
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border: 2px solid var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background: #096b99;
+  color: var(--card-bg);
+  border-color: #0c86b6;
+}
+
+.btn-icon {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 12px;
+  width: 48px;
+  height: 48px;
+  justify-content: center;
+}
+
+.btn-icon:hover {
+  border-color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.btn-icon.active {
+  background: var(--text-primary);
+  color: var(--card-bg);
+}
+
+.btn-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Product details info */
+.product-details-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.info-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.info-text a {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+/* Related products section */
+.related-products-section {
+  margin-top: 80px;
+  padding-top: 60px;
+  border-top: 1px solid var(--border-color);
+}
+
+.related-products-section h2 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+
+.related-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .related-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.related-product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.related-product-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.related-product-card h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+  min-height: 2.8em;
+}
+
+.related-price {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.btn-small {
+  padding: 10px 16px;
+  font-size: 12px;
+  background: #456346 !important;
+  color: #ffffffb0 !important;
+  border: none !important;
+}
+
+/* Make 'View Details' / small buttons more compact on mobile */
+@media (max-width: 480px) {
+  .related-products-section .btn-small,
+  .btn-small {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+    border-radius: 6px !important;
+    width: auto !important;
+    min-width: 0 !important;
+  }
+}
+
+/* Error message */
+.error-message {
+  text-align: center;
+  padding: 100px 20px;
+  font-size: 18px;
+}
+
+.error-message a {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+  .product-detail-container {
+    padding: 20px 18px;
+    max-width: 100%;
+  }
+
+  .product-detail-grid {
+    gap: 20px;
+  }
+
+  .product-title {
+    font-size: 20px;
+  }
+
+  .price-now {
+    font-size: 20px;
+  }
+
+  .product-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .related-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .back-nav {
+    margin-bottom: 20px;
+  }
+
+  /* Compact quantity control on small screens */
+  .quantity-control{
+    gap: 6px;
+    padding: 6px 5px;
+    border-radius: 6px;
+    width: fit-content;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+  .qty-btn{
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+    padding: 0;
+    border-radius: 3px;
+  }
+  /* Narrow the increase button (right side) to reduce visual weight */
+  #increaseQty.qty-btn { width: 24px; }
+  .qty-input{
+    width: 32px;
+    font-size: 13px;
+    padding: 2px 0;
+  }
+  
+  /* Shrink action buttons on mobile */
+  .product-actions{
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .btn{
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  .btn-icon{
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+  }
+}
+
+/* Extra compact styles for very small phones (max-width: 420px) */
+@media (max-width: 420px) {
+  /* Reduce spacing for the info panel so action controls feel smaller */
+  .product-info-section{ gap: 8px; padding: 0; }
+
+  /* Make quantity control even more compact with good padding */
+  .quantity-control{ gap: 4px; padding: 4px 3px; border-radius: 5px; }
+  .qty-btn{ width: 24px; height: 24px; font-size: 12px; padding: 0; border-radius: 2px; }
+  .qty-input{ width: 28px; font-size: 12px; padding: 1px 0; }
+
+  /* Shrink action buttons more */
+  .product-actions{ gap: 4px; grid-template-columns: 1fr; }
+  .btn{ padding: 6px 10px; font-size: 11px; }
+  .btn-icon{ width: 32px; height: 32px; padding: 4px; }
+}
+
+/* Ultra-compact layout for the smallest screens (max-width: 360px) */
+@media (max-width: 360px) {
+  .product-info-section{ gap: 6px; }
+  .quantity-control{ gap: 3px; padding: 3px 2px; border-radius: 4px; }
+  .qty-btn{ width: 22px; height: 22px; font-size: 11px; border-radius: 2px; }
+  .qty-input{ width: 26px; font-size: 11px; padding: 1px 0; }
+  .product-actions{ gap: 3px; }
+  .btn{ padding: 5px 8px; font-size: 10px; }
+  .btn-icon{ width: 30px; height: 30px; padding: 3px; }
+}
+
+/* Add a bit of left/right padding to the page background itself so content doesn't touch screen edges on mobile */
+@media (max-width: 640px) {
+  .dynamic-page{ padding-left: 12px; padding-right: 12px; }
+}
+
+@media (max-width: 420px) {
+  .dynamic-page{ padding-left: 14px; padding-right: 14px; }
+}
+
+@media (max-width: 360px) {
+  .dynamic-page{ padding-left: 12px; padding-right: 12px; }
+}
+
+/* Extra small phones: compact padding, reduce gaps and thumb size; ensure no horizontal overflow */
+@media (max-width: 420px) {
+  .product-detail-container {
+    padding: 12px 12px;
+  }
+  .product-detail-grid { gap: 12px; }
+  .product-image-main { border-radius: 8px; }
+  .thumb-btn{ flex: 0 0 60px; width: 60px; height: 60px; }
+  .thumbs-scroll{ gap: 8px; }
+  .product-title{ font-size: 18px; }
+  .price-now{ font-size: 18px; }
+  .product-description{ font-size: 14px; }
+  .product-actions{ gap: 4px; }
+  .slider-btn{ width: 36px; height: 36px; }
+  .related-products-grid { grid-template-columns: 1fr; gap: 14px; }
+  .quantity-control { width: fit-content; }
+}
+
+/* Ultra small phones: avoid extra padding and adjust button sizes */
+@media (max-width: 360px) {
+  .product-detail-container { padding: 10px 10px; }
+  .product-image-main { aspect-ratio: 1; height: auto; }
+  .thumb-btn{ flex: 0 0 52px; width: 52px; height: 52px; }
+  .product-actions .btn{ padding: 5px 8px; font-size: 10px; }
+  .qty-input{ width: 24px; }
+  .slider-btn{ width: 32px; height: 32px; }
+  .thumbs-scroll { padding-bottom: 6px; }
+  .product-title { font-size: 16px; }
+  /* Make quantity control ultra-compact on small phones */
+  .quantity-control{ gap: 2px; padding: 0px; }
+  .qty-btn{ width: 18px; height: 18px; font-size: 10px; }
+  /* Narrow the increase button further on ultra-small phones */
+  #increaseQty.qty-btn { width: 16px; }
+  .qty-input{ width: 24px; font-size: 10px; }
+}
+
+/* Ensure there is no horizontal overflow on mobile */
+@media (max-width: 640px) {
+  .dynamic-page, .product-detail-container, .product-detail-grid { overflow-x: hidden; }
+  .product-image-main img, .thumb-btn img { max-width: 100%; height: auto; display: block; }
+  .product-actions .btn { width: 100%; }
+}
